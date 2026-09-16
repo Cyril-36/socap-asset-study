@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="A frame-level study of 18 media attachments across three Social Capital Inc. launches, asking whether wave posts share a production with the hero film.">
+<meta property="og:title" content="Same Set, Different Cut">
+<meta property="og:description" content="A frame-level study of 18 media attachments across three Social Capital Inc. launches.">
+<meta property="og:type" content="article">
+<title>Same Set, Different Cut</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap">
+
+<style>
+  :root{
+    --paper:#F1F2F4;
+    --panel:#FBFBFC;
+    --ink:#15171B;
+    --ink-2:#565C66;
+    --ink-3:#848B96;
+    --rule:#D4D7DD;
+    --rule-2:#E3E5EA;
+    --signal:#8A5A12;
+    --signal-soft:#F0E3CE;
+    --hatch:#B9BEC7;
+    --focus:#2F5FA8;
+    --strip-bg:#FFFFFF;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#131519;
+      --panel:#1A1D22;
+      --ink:#E8EAEE;
+      --ink-2:#A3AAB5;
+      --ink-3:#767D89;
+      --rule:#2C3037;
+      --rule-2:#23262C;
+      --signal:#D6A45C;
+      --signal-soft:#3A2F1D;
+      --hatch:#4A505A;
+      --focus:#7FA6DE;
+      --strip-bg:#0E1013;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#131519;
+    --panel:#1A1D22;
+    --ink:#E8EAEE;
+    --ink-2:#A3AAB5;
+    --ink-3:#767D89;
+    --rule:#2C3037;
+    --rule-2:#23262C;
+    --signal:#D6A45C;
+    --signal-soft:#3A2F1D;
+    --hatch:#4A505A;
+    --focus:#7FA6DE;
+    --strip-bg:#0E1013;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Serif",Georgia,"Times New Roman",serif;
+    font-size:16.5px;
+    line-height:1.62;
+    padding-inline:20px;
+    padding-block:0;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;}
+  .col{max-width:65ch;}
+  a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--signal);text-underline-offset:3px;text-decoration-thickness:1.5px;}
+  a:hover{color:var(--signal);}
+  a:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:2px;}
+
+  h1,h2,h3,.cond{font-family:"IBM Plex Sans Condensed",-apple-system,"Helvetica Neue",Arial,sans-serif;}
+  .mono,.meta,.tc,.num{font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;}
+
+  /* ---------- masthead ---------- */
+  header.mast{border-bottom:2px solid var(--ink);padding-block:34px 18px;margin-bottom:34px;}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-2);margin:0 0 20px;
+  }
+  h1{
+    font-size:clamp(40px,8vw,74px);line-height:.98;font-weight:700;letter-spacing:-.022em;
+    margin:0 0 20px;text-wrap:balance;
+  }
+  .standfirst{font-size:clamp(17px,2.4vw,20px);line-height:1.5;color:var(--ink);margin:0 0 26px;max-width:58ch;}
+  .standfirst em{font-style:italic;color:var(--signal);}
+  .byline{
+    display:flex;flex-wrap:wrap;gap:8px 26px;font-family:"IBM Plex Mono",monospace;
+    font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);
+  }
+
+  section{margin-block:52px;}
+  h2{
+    font-size:13px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;
+    color:var(--ink-2);margin:0 0 6px;padding-bottom:8px;border-bottom:1px solid var(--rule);
+  }
+  h2 + .lede{margin-top:20px;}
+  h3{font-size:clamp(22px,3.4vw,28px);line-height:1.18;font-weight:600;letter-spacing:-.01em;margin:0 0 10px;}
+  p{margin:0 0 16px;}
+  .lede{font-size:18.5px;line-height:1.55;}
+
+  /* ---------- finding ---------- */
+  .finding{
+    border-left:3px solid var(--signal);padding:4px 0 4px 22px;margin-block:26px;
+    max-width:62ch;
+  }
+  .finding p:last-child{margin-bottom:0;}
+  .finding strong{font-weight:600;}
+
+  /* ---------- tally ---------- */
+  .tally{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--rule);background:var(--panel);margin-top:24px;}
+  .tally div{flex:1 1 130px;padding:16px 18px;border-right:1px solid var(--rule);}
+  .tally div:last-child{border-right:0;}
+  .tally .n{font-family:"IBM Plex Mono",monospace;font-size:30px;font-weight:500;line-height:1;display:block;margin-bottom:8px;font-variant-numeric:tabular-nums;}
+  .tally .k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);}
+  .tally .is-rel .n{color:var(--signal);}
+
+  /* ---------- comparison ---------- */
+  .compare{border:1px solid var(--rule);background:var(--panel);padding:22px;margin-top:26px;}
+  .cmprow + .cmprow{margin-top:24px;padding-top:24px;border-top:1px solid var(--rule-2);}
+  .cmphead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin-bottom:12px;}
+  .role{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-2);}
+  .handle{font-family:"IBM Plex Mono",monospace;font-size:15px;font-weight:500;}
+  .dur{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums;}
+  .bar{height:5px;background:var(--rule-2);margin-bottom:12px;}
+  .bar span{display:block;height:100%;background:var(--ink-3);}
+  .bar.is-signal span{background:var(--signal);}
+
+  .strip{display:block;width:100%;height:auto;background:var(--strip-bg);border:1px solid var(--rule-2);}
+  .tcs{display:flex;justify-content:space-between;margin-top:5px;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-3);font-variant-numeric:tabular-nums;}
+
+  /* ---------- evidence ---------- */
+  .launch{margin-top:44px;}
+  .launch-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:22px;}
+  .launch-head h3{margin:0;}
+  .launch-head .meta{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);}
+
+  .item{
+    display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:22px;
+    padding-block:22px;border-top:1px solid var(--rule-2);align-items:start;
+  }
+  .item:first-of-type{border-top:0;}
+  .item.is-hero{background:var(--panel);border:1px solid var(--rule);padding:20px;margin-bottom:6px;}
+  .item-media img{display:block;width:100%;height:auto;background:var(--strip-bg);border:1px solid var(--rule-2);}
+  .noimg{
+    border:1px solid var(--rule);color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-size:11.5px;
+    padding:28px 16px;text-align:center;line-height:1.5;
+    background-image:repeating-linear-gradient(135deg,transparent 0 7px,var(--hatch) 7px 8px);
+  }
+  .noimg span{background:var(--panel);padding:4px 8px;display:inline-block;}
+
+  .item-meta .handle{display:block;margin-bottom:3px;}
+  .kind{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);display:block;margin-bottom:12px;}
+  .reason{font-size:15px;line-height:1.55;margin:0 0 14px;color:var(--ink);}
+  .src{font-family:"IBM Plex Mono",monospace;font-size:11.5px;word-break:break-all;}
+
+  .label{
+    display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;
+    text-transform:uppercase;padding:4px 9px;margin-bottom:12px;border:1px solid var(--rule);color:var(--ink-2);
+  }
+  .label.related{border-color:var(--signal);color:var(--signal);background:var(--signal-soft);font-weight:500;}
+  .label.unknown{
+    border-style:dashed;color:var(--ink-3);
+  }
+
+  /* ---------- method ---------- */
+  table{width:100%;border-collapse:collapse;font-family:"IBM Plex Mono",monospace;font-size:13px;margin-block:20px;font-variant-numeric:tabular-nums;}
+  .tablewrap{overflow-x:auto;}
+  th,td{text-align:left;padding:10px 14px 10px 0;border-bottom:1px solid var(--rule-2);vertical-align:top;}
+  th{font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-2);font-weight:500;border-bottom:1px solid var(--rule);}
+  td.n{white-space:nowrap;}
+
+  ul.limits{list-style:none;padding:0;margin:18px 0 0;max-width:62ch;}
+  ul.limits li{padding-left:26px;position:relative;margin-bottom:13px;line-height:1.55;}
+  ul.limits li::before{
+    content:"—";position:absolute;left:0;top:0;color:var(--signal);
+    font-family:"IBM Plex Mono",monospace;
+  }
+
+  footer{border-top:2px solid var(--ink);margin-top:64px;padding-block:24px 60px;}
+  .credits{display:flex;flex-wrap:wrap;gap:26px;font-size:14.5px;}
+  .credits div{flex:1 1 260px;}
+  .credits .k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);display:block;margin-bottom:7px;}
+
+  @media (max-width:720px){
+    body{font-size:16px;padding-inline:16px;}
+    .item{grid-template-columns:1fr;gap:14px;}
+    .item.is-hero{padding:14px;}
+    .tally div{flex:1 1 50%;border-bottom:1px solid var(--rule);}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+</style>
+<style>
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;}
+  img{max-width:100%;}
+  [hidden]{display:none!important;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Independent analysis · Not affiliated with Social Capital Inc.</p>
+  <h1>Same Set,<br>Different Cut</h1>
+  <p class="standfirst">When a creator post in a Social Capital Inc. launch wave carries media, does that media <em>share a production</em> with the launch's hero film — or not?</p>
+  <div class="byline">
+    <span>Chaitanya&nbsp;“Cyril”&nbsp;Pudota</span>
+    <span>16 Sep 2026</span>
+    <span>3 launches · 17 posts · 18 attachments</span>
+  </div>
+</header>
+
+<section>
+  <h2>Finding</h2>
+  <div class="finding">
+    <p><strong>No wave video is the hero film.</strong> Hero films in this sample run 111–172 seconds. Wave videos run 5–33 seconds. A 27-second post cannot be a 172-second film reposted.</p>
+    <p>Two attachments are <strong>related</strong> to the hero without being cut from it. PlayerZero's @TANANY_VC shares the hero's talent, wardrobe, set, subtitle treatment and brand endcard — but shows footage the hero does not. Cartesia's @imamberborse carries the product's own interface inside an independently produced comparison.</p>
+    <p>The remaining sixteen have no production in common with the hero at all.</p>
+  </div>
+
+  <div class="tally">
+    <div><span class="n">0</span><span class="k">Same cut</span></div>
+    <div class="is-rel"><span class="n">2</span><span class="k">Related</span></div>
+    <div><span class="n">16</span><span class="k">Different</span></div>
+    <div><span class="n">0</span><span class="k">Unknown</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>The PlayerZero pair</h2>
+  <p class="lede col">This is the closest relationship in the sample, and the reason the label is <em>related</em> rather than <em>same</em>. Both frames below carry the same presenter in the same grey shirt on the same set, with matching subtitle styling and the same endcard. None of the five frames sampled from each matches a frame in the other — which is not the same as proving no shared footage exists anywhere in either file.</p>
+
+  <div class="compare">
+    <div class="cmprow">
+      <div class="cmphead">
+        <span class="role">Hero</span>
+        <span class="handle">@akoratana</span>
+        <span class="dur">172 s · founder</span>
+      </div>
+      <div class="bar"><span style="width:100%"></span></div>
+      <img class="strip" src="img/strip_HERO_akoratana.jpg" alt="Five frames sampled across the 172-second PlayerZero hero film: the presenter in a grey shirt on a studio set with on-screen captions.">
+      <div class="tcs"><span>17s</span><span>52s</span><span>86s</span><span>120s</span><span>155s</span></div>
+    </div>
+    <div class="cmprow">
+      <div class="cmphead">
+        <span class="role">Wave</span>
+        <span class="handle">@TANANY_VC</span>
+        <span class="dur">27 s · related</span>
+      </div>
+      <div class="bar is-signal"><span style="width:15.7%"></span></div>
+      <img class="strip" src="img/strip_playerzero_TANANY_VC_0.jpg" alt="Five frames sampled across the 27-second @TANANY_VC video: the same presenter and set, showing a table-tennis product sequence and a PlayerZero endcard.">
+      <div class="tcs"><span>2.7s</span><span>8.1s</span><span>13.5s</span><span>18.9s</span><span>24.3s</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Evidence</h2>
+  <p class="lede col">Every media attachment in the sample, with the frames it was judged on. Video is sampled at five evenly spaced frames; photographs are shown whole. Labels were assigned by looking at the media — see <a href="#method">Method</a>.</p>
+
+  <!-- ============ PLAYERZERO ============ -->
+  <div class="launch">
+    <div class="launch-head">
+      <h3>PlayerZero</h3>
+      <span class="meta mono">Mar 2026 · 6 attachments</span>
+    </div>
+
+    <div class="item is-hero">
+      <div class="item-media">
+        <img src="img/strip_HERO_akoratana.jpg" alt="Frame strip from the PlayerZero hero film.">
+      </div>
+      <div class="item-meta">
+        <span class="role">Hero film</span>
+        <span class="handle">@akoratana</span>
+        <span class="kind">Video · 172 s</span>
+        <p class="reason">The reference production. Presenter on a lit set, captioned throughout, closing on a PlayerZero endcard.</p>
+        <p class="src"><a href="https://x.com/akoratana/status/2036111467016319074">x.com/akoratana/status/2036111467016319074</a></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-media"><img src="img/strip_playerzero_TANANY_VC_0.jpg" alt="Frame strip showing the same presenter and set as the hero, with a table-tennis sequence."></div>
+      <div class="item-meta">
+        <span class="handle">@TANANY_VC</span>
+        <span class="kind">Video · 27 s</span>
+        <span class="label related">Related</span>
+        <p class="reason">Same talent, wardrobe, set, caption treatment and endcard as the hero — but a table-tennis product sequence that appears in no sampled hero frame. A different cut from a shared production, not an excerpt of the hero file.</p>
+        <p class="src"><a href="https://x.com/TANANY_VC/status/2036257402564255969">x.com/TANANY_VC/status/2036257402564255969</a></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-media"><img src="img/strip_playerzero_Rothmus_0.jpg" alt="Frame strip of a man in a green suit outside a shopping centre."></div>
+      <div class="item-meta">
+        <span class="handle">@Rothmus</span>
+        <span class="kind">Video · 11 s</span>
+        <span class="label">Different</span>
+        <p class="reason">Street footage of a man in a green suit outside a shopping centre. No element in common with the hero production.</p>
+        <p class="src"><a href="https://x.com/Rothmus/status/2036137446941847641">x.com/Rothmus/status/2036137446941847641</a></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-media"><img src="img/strip_playerzero_ramxcodes_0.jpg" alt="Frame strip of a man in a tuxedo at an awards ceremony."></div>
+      <div class="item-meta">
+        <span class="handle">@ramxcodes</span>
+        <span class="kind">Video · 18 s</span>
+        <span class="label">Different</span>
+        <p class="reason">An awards-ceremony clip used as a reaction. Unrelated footage.</p>
+        <p class="src"><a href="https://x.com/ramxcodes/status/2036131304773918827">x.com/ramxcodes/status/2036131304773918827</a></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-media"><img src="img/playerzero_Jacobsklug_0.jpg" alt="A graphic titled Jacob's notes: The AI Stack Behind 250+ Apps, listing five tools."></div>
+      <div class="item-meta">
+        <span class="handle">@Jacobsklug</span>
+        <span class="kind">Photo</span>
+        <span class="label">Different</span>
+        <p class="reason">A handwritten-style graphic listing an AI tool stack. Shares no visual element with the hero production.</p>
+        <p class="src"><a href="https://x.com/Jacobsklug/status/2036786452445741309">x.com/Jacobsklug/status/2036786452445741309</a></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-media"><img src="img/playerzero_kritarthmittal_0.jpg" alt="Outdoor portrait photograph of a man in a blue jacket."></div>
+      <div class="item-meta">
+        <span class="handle">@kritarthmittal</span>
+        <span class="kind">Photo · 1 of 2</span>
+        <span class="label">Different</span>
+        <p class="reason">An outdoor portrait. Different setting, lighting and wardrobe from the hero film.</p>
+        <p class="src"><a href="https://x.com/kritarthmittal/status/2036296030715842826">x.com/kritarthmittal/status/2036296030715842826</a></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-media"><img src="img/playerzero_kritarthmittal_1.jpg" alt="Screenshot of a LinkedIn experience section."></div>
+      <div class="item-meta">
+        <span class="handle">@kritarthmittal</span>
+        <span class="kind">Photo · 2 of 2</span>
+        <span class="label">Different</span>
+        <p class="reason">A screenshot of a LinkedIn profile. Not film material of any kind.</p>
+        <p class="src"><a href="https://x.com/kritarthmittal/status/2036296030715842826">x.com/kritarthmittal/status/2036296030715842826</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CARTESIA ============ -->
+  <div class="launch">
+    <div class="launch-head">
+      <h3>Cartesia</h3>
+      <span class="meta mono">Oct 2025 · 9 attachments</span>
+    </div>
+
+    <div class="item is-hero">
+      <div class="item-media"><img src="img/strip_HERO_krandiash.jpg" alt="Frame strip from the Cartesia hero film showing the Sonic-3 title card, a green orb interface, a latency chart and the founder."></div>
+      <div class="item-meta">
+        <span class="role">Hero film</span>
+        <span class="handle">@krandiash</span>
+        <span class="kind">Video · 140 s</span>
+        <p class="reason">The reference production: Sonic-3 title card, the green orb conversation interface, a latency comparison chart, founder to camera.</p>
+        <p class="src"><a href="https://x.com/krandiash/status/1983202316397453676">x.com/krandiash/status/1983202316397453676</a></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-media"><img src="img/strip_cartesia_imamberborse_0.jpg" alt="Frame strip of a side-by-side comparison between ElevenLabs Turbo and Cartesia Sonic-3, using the green orb interface."></div>
+      <div class="item-meta">
+        <span class="handle">@imamberborse</span>
+        <span class="kind">Video · 33 s</span>
+        <span class="label related">Related</span>
+        <p class="reason">An independently produced side-by-side against ElevenLabs Turbo v2.5, demonstrating Hindi, Bengali and English code-switching. It carries Cartesia's own green orb interface — shared product visuals, not shared footage.</p>
+        <p class="src"><a href="https://x.com/imamberborse/status/1983969416707817739">x.com/imamberborse/status/1983969416707817739</a></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-media"><img src="img/strip_cartesia_HeyZoyaKhan_0.jpg" alt="Frame strip of a generic phone held in a hand against a blue gradient."></div>
+      <div class="item-meta">
+        <span class="handle">@HeyZoyaKhan</span>
+        <span class="kind">Video · 22 s</span>
+        <span class="label">Different</span>
+        <p class="reason">Generic phone-product footage, not specific to Cartesia.</p>
+        <p class="src"><a href="https://x.com/HeyZoyaKhan/status/1984232263689863362">x.com/HeyZoyaKhan/status/1984232263689863362</a></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-media"><img src="img/strip_cartesia_Parul_Gautam7_0.jpg" alt="Frame strip of a two-panel meme with a Cartesia Sonic 3.0 wordmark."></div>
+      <div class="item-meta">
+        <span class="handle">@Parul_Gautam7</span>
+        <span class="kind">GIF · 5 s</span>
+        <span class="label">Different</span>
+        <p class="reason">A two-panel meme format carrying the Cartesia wordmark. The mark appears; the production does not.</p>
+        <p class="src"><a href="https://x.com/Parul_Gautam7/status/1985376645402988891">x.com/Parul_Gautam7/status/1985376645402988891</a></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-media"><img src="img/cartesia_deedydas_0.jpg" alt="A table of founders, companies and valuations."></div>
+      <div class="item-meta">
+        <span class="handle">@deedydas</span>
+        <span class="kind">Photo</span>
+        <span class="label">Different</span>
+        <p class="reason">A comparison table of companies and founders. No visual element from the hero production.</p>
+        <p class="src"><a href="https://x.com/deedydas/status/1983371291672621307">x.com/deedydas/status/1983371291672621307</a></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-media"><img src="img/cartesia_AdarshChetan_0.jpg" alt="Studio portrait of four people standing together."></div>
+      <div class="item-meta">
+        <span class="handle">@AdarshChetan</span>
+        <span class="kind">Photo</span>
+        <span class="label">Different</span>
+        <p class="reason">A group portrait. Different lighting setup and framing from the hero film.</p>
+        <p class="src"><a href="https://x.com/AdarshChetan/status/1984931048346808366">x.com/AdarshChetan/status/1984931048346808366</a></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-media"><img src="img/cartesia_EyeingAI_0.jpg" alt="Portrait of two people laughing."></div>
+      <div class="item-meta">
+        <span class="handle">@EyeingAI</span>
+        <span class="kind">Photo</span>
+        <span class="label">Different</span>
+        <p class="reason">A two-person portrait, again a still and unrelated to the hero footage.</p>
+        <p class="src"><a href="https://x.com/EyeingAI/status/1984499690570989989">x.com/EyeingAI/status/1984499690570989989</a></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-media"><img src="img/cartesia_Bharambe2Kiran_0.jpg" alt="Large group photograph of a team in an office."></div>
+      <div class="item-meta">
+        <span class="handle">@Bharambe2Kiran</span>
+        <span class="kind">Photo</span>
+        <span class="label">Different</span>
+        <p class="reason">A large team photograph in an office. Shares a room with the next entry, not with the hero.</p>
+        <p class="src"><a href="https://x.com/Bharambe2Kiran/status/1983218092944629784">x.com/Bharambe2Kiran/status/1983218092944629784</a></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-media"><img src="img/cartesia_Vinay_bharambe_0.jpg" alt="Large group photograph of a team in the same office."></div>
+      <div class="item-meta">
+        <span class="handle">@Vinay_bharambe</span>
+        <span class="kind">Photo</span>
+        <span class="label">Different</span>
+        <p class="reason">The same room and occasion as the entry above — a useful reminder that two posts can be related to <em>each other</em> without either being related to the hero.</p>
+        <p class="src"><a href="https://x.com/Vinay_bharambe/status/1983221619058246113">x.com/Vinay_bharambe/status/1983221619058246113</a></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-media"><img src="img/cartesia_kritarthmittal_0.jpg" alt="Profile portrait of a man against a plain background."></div>
+      <div class="item-meta">
+        <span class="handle">@kritarthmittal</span>
+        <span class="kind">Photo</span>
+        <span class="label">Different</span>
+        <p class="reason">A single portrait. Still photography, no shared production.</p>
+        <p class="src"><a href="https://x.com/kritarthmittal/status/1983216332926861812">x.com/kritarthmittal/status/1983216332926861812</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ GAMMA ============ -->
+  <div class="launch">
+    <div class="launch-head">
+      <h3>Gamma</h3>
+      <span class="meta mono">Nov 2025 · 3 attachments</span>
+    </div>
+
+    <div class="item is-hero">
+      <div class="item-media"><img src="img/strip_HERO_thisisgrantlee.jpg" alt="Frame strip from the Gamma hero film: a founder in front of bookshelves, interleaved with product graphics."></div>
+      <div class="item-meta">
+        <span class="role">Hero film</span>
+        <span class="handle">@thisisgrantlee</span>
+        <span class="kind">Video · 111 s</span>
+        <p class="reason">The reference production: founder to camera in front of bookshelves, cut with product graphics and usage figures.</p>
+        <p class="src"><a href="https://x.com/thisisgrantlee/status/1987880600661889356">x.com/thisisgrantlee/status/1987880600661889356</a></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-media"><img src="img/gamma_kritarthmittal_0.jpg" alt="Photograph of a man standing in a bright office with people working at desks behind him."></div>
+      <div class="item-meta">
+        <span class="handle">@kritarthmittal</span>
+        <span class="kind">Photo</span>
+        <span class="label">Different</span>
+        <p class="reason">An office photograph of the founder. Different location, wardrobe and lighting from the bookshelf set used throughout the hero film.</p>
+        <p class="src"><a href="https://x.com/kritarthmittal/status/1987925808296648763">x.com/kritarthmittal/status/1987925808296648763</a></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-media"><img src="img/strip_a16z_1989135282848059820.jpg" alt="Five frames from a 97-second a16z clip: the founder at a podcast microphone under coloured lighting with yellow captions."></div>
+      <div class="item-meta">
+        <span class="handle">@a16z</span>
+        <span class="kind">Video · 97 s</span>
+        <span class="label">Different</span>
+        <p class="reason">A captioned podcast clip — coloured lighting, boom microphone, a branded backdrop and yellow caption styling. Same subject as the hero, nothing else in common with its bookshelf set or graphic inserts.</p>
+        <p class="src"><a href="https://x.com/a16z/status/1989135282848059820">x.com/a16z/status/1989135282848059820</a></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-media"><img src="img/strip_a16z_1988283372947247104.jpg" alt="Two frames from a 52-minute a16z podcast episode: the founder at a microphone beside a plant, in a neutral room."></div>
+      <div class="item-meta">
+        <span class="handle">@a16z</span>
+        <span class="kind">Video · 3150 s · 2 frames sampled</span>
+        <span class="label">Different</span>
+        <p class="reason">The full 52-minute podcast episode, in a different room again from the clip above. Only two frames were sampled here, from a partial download — enough to place the setting, not enough to rule out other material inside an episode this long.</p>
+        <p class="src"><a href="https://x.com/a16z/status/1988283372947247104">x.com/a16z/status/1988283372947247104</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="method">
+  <h2>Method</h2>
+
+  <h3 style="margin-top:20px">Collection</h3>
+  <p class="col">Wave posts were taken from the public catalogue in <a href="https://github.com/yashbudhia/socap-lens">socap-lens</a>, which indexes 98 wave posts across nine launches. That catalogue records <em>that</em> a post carried media and its type, but stores no media URLs. The files themselves were recovered per post from the public <span class="mono">fxtwitter</span> JSON endpoint — 18 of 18 attachments resolved for these three launches — then each video was downloaded under its post ID and sampled at five evenly spaced frames with ffmpeg. One exception is recorded on the page: a 52-minute episode downloaded only partially, and is sampled at two frames.</p>
+
+  <h3 style="margin-top:28px">Why the labels were assigned by eye</h3>
+  <p class="col">The obvious shortcut is to compare thumbnails numerically and call a low score a match. That was tried first, and it does not work. Normalised mean pixel difference, 256×256, letterbox auto-cropped:</p>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>Pair</th><th class="n">Score</th><th>Numeric reading</th><th>On review</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>PlayerZero hero vs @TANANY_VC</td><td class="n">0.0869</td><td>possible</td><td>Related</td></tr>
+        <tr><td>@Vinay_bharambe vs @Bharambe2Kiran</td><td class="n">0.2979</td><td>different</td><td>Same room, same occasion</td></tr>
+        <tr><td>Gamma hero vs @a16z</td><td class="n">0.2773</td><td>different</td><td>Different production</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="col">Both the first and second pairs are genuinely related, and the metric separates them by a factor of three. A thumbnail is one frame at an arbitrary timestamp, so the comparison cannot settle video identity in either direction. The scores are reported here as the reason human review was necessary — not as a result. Every label on this page was assigned by looking at the frames shown beside it.</p>
+
+  <h3 style="margin-top:28px">What this cannot show</h3>
+  <ul class="limits">
+    <li>Who made, supplied, commissioned or paid for any asset. None of that is visible in the media, and no label on this page claims it.</li>
+    <li>Anything about the breadth, health or concentration of the creator network. The sample is search-derived and weighted toward high-engagement posts.</li>
+    <li>Anything beyond these 17 posts. Wave samples in the source catalogue are small — Gamma 4 posts, Cartesia 9, PlayerZero 9 — and are not a census.</li>
+    <li>Whether the pattern holds elsewhere. Wispr Flow has 37 media-bearing posts and would extend the test to a fourth launch; it cannot falsify a count scoped to these three.</li>
+  </ul>
+</section>
+
+<footer>
+  <div class="credits">
+    <div>
+      <span class="k">Prior work</span>
+      <a href="https://github.com/yashbudhia/socap-lens">socap-lens</a> supplied the post catalogue and the timing, hero-handle and creator-roster findings this page takes as given rather than re-deriving. <a href="https://github.com/atzgg132/waveline-socap">waveline-socap</a> argues the Wispr Flow wave was voice-matched rather than copy-pasted; this page asks the same question of the visual layer.
+    </div>
+    <div>
+      <span class="k">Standing</span>
+      An independent study of public posts, made as part of an application to Social Capital Inc. Not affiliated with, commissioned by, or endorsed by the company or any client named here. All media remains the property of its owners and is linked to its source.
+    </div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
